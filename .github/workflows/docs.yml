@@ -1,0 +1,45 @@
+name: docs
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - uses: actions/cache@v2
+      with:
+        path: env
+        key: env-${{ hashFiles('**/requirements.txt') }}
+
+    - name: Install dependencies
+      run: |
+        python3 -m venv env
+        . env/bin/activate
+        make install
+
+    - name: Config git
+      run: |
+        git config --global user.email "defossez@fb.com"
+        git config --global user.name "Alexandre Défossez (autodoc)"
+
+    - name: Reset branch
+      run: |
+        git branch -f gh-docs main
+        git checkout gh-docs
+
+    - name: Make docs
+      run: |
+        . env/bin/activate
+        make docs
+        git add -f docs
+        git commit -m docs
+
+    - name: Push branch
+      run: |
+        git push -f -u origin gh-docs

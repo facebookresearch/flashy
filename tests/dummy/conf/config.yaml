@@ -1,0 +1,14 @@
+epochs: 4
+dim: 4
+num_workers: 0
+dset_size: 16
+batch_size: 4
+device: cpu
+distrib_method: gloo
+
+log_updates: 8
+stop_at: 2
+
+dora:
+  dir: /tmp/flashy_dummy_outputs
+  exclude: [num_workers, stop_at]

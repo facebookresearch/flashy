@@ -1,0 +1,14 @@
+data:
+  root: /tmp/flashy_cifar/data
+
+device: cpu
+num_workers: 10
+log_updates: 10
+epochs: 100
+optim:
+  lr: 1e-4
+  batch_size: 64
+
+dora:
+  dir: /tmp/flashy_cifar_${oc.env:USER}/outputs
+  exclude: [num_workers, log_updates]

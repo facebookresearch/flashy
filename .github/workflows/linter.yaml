@@ -1,0 +1,31 @@
+name: linter
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - uses: actions/cache@v2
+      with:
+        path: env
+        key: env-${{ hashFiles('**/requirements.txt') }}
+
+    - name: Install dependencies
+      run: |
+        python3 -m venv env
+        . env/bin/activate
+        make install
+
+    - name: Run linter
+      run: |
+        . env/bin/activate
+        make linter

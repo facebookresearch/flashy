@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# macOS dir files
+.DS_Store
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Tests and linter
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# docs
+/docs
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Weight & Biases
+wandb
+samples/
+
+# personal notebooks & scripts
+/notebooks
+/local_scripts
+/notes
+
+# Artifacts
+.coverage
+/docs
