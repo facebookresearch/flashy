@@ -20,4 +20,7 @@ tests:
 upload: docs
 	rsync -ar docs bob:www/share/flashy/
 
-.PHONY: linter tests docs upload
+dist:
+	python setup.py sdist
+
+.PHONY: linter tests docs upload dist
