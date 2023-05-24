@@ -1,0 +1,8 @@
+include Makefile
+include LICENSE
+include requirements.txt
+include flashy/py.typed
+include *.md
+recursive-include examples *.py
+recursive-include examples *.yaml
+recursive-include docs *.html
