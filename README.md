@@ -156,7 +156,7 @@ dora -P [basic|cifar] run
 
 Checkout [Flashy API Documentation][api]
 
-[api]: https://share.honu.io/flashy/docs/flashy/index.html
+[api]: https://facebookresearch.github.io/flashy/flashy/index.html
 [dora]: https://github.com/facebookresearch/dora
 [hydra]: https://github.com/facebookresearch/hydra
 
