@@ -138,7 +138,7 @@ class WandbLogger(ExperimentLogger):
             key: wandb.Audio(audio, sample_rate=sample_rate, **kwargs)
         }
         metrics = _add_prefix(metrics, prefix, self.group_separator)
-        self.log_metrics(metrics, prefix, step)
+        self.log_metrics(prefix, metrics, step)
 
     @rank_zero_only
     def log_image(self, prefix: tp.Union[str, tp.List[str]], key: str, image: tp.Any,
