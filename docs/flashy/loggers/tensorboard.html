@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>flashy.loggers.tensorboard API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>flashy.loggers.tensorboard</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from argparse import Namespace
+from pathlib import Path
+import typing as tp
+import warnings
+
+import dora
+import torch
+
+try:
+    from torch.utils.tensorboard import SummaryWriter
+except ModuleNotFoundError:
+    SummaryWriter = None  # type: ignore
+
+from . import ExperimentLogger
+from .utils import (
+    _add_prefix, _convert_params, _flatten_dict,
+    _sanitize_params
+)
+from ..distrib import rank_zero_only, is_rank_zero
+
+
+class TensorboardLogger(ExperimentLogger):
+    &#34;&#34;&#34;ExperimentLogger for Tensorboard
+
+    Args:
+        save_dir (str): The directory where the experiment logs are written to
+        with_media_logging (bool): Whether to save media samples with the logger or ignore them
+            This comes at extra storage costs for Tensorboard so we might not want to enforce it
+        name (str): Name for the experiment logs
+        kwargs (Any): Additional tensorboard parameters
+    &#34;&#34;&#34;
+    def __init__(self, save_dir: tp.Union[Path, str], with_media_logging: bool = True,
+                 name: tp.Optional[str] = None, **kwargs: tp.Any):
+        self._with_media_logging = with_media_logging
+        self._save_dir = str(save_dir)
+        self._name = name or &#39;tensorboard&#39;
+        self._writer: tp.Optional[SummaryWriter] = None
+        if SummaryWriter is not None:
+            self._writer = SummaryWriter(self.save_dir, **kwargs)
+        else:
+            warnings.warn(&#34;tensorboard package was not found: use pip install tensorboard&#34;)
+
+    @property  # type: ignore
+    @rank_zero_only
+    def writer(self) -&gt; tp.Optional[SummaryWriter]:
+        &#34;&#34;&#34;Actual tensorboard writer object.&#34;&#34;&#34;
+        return self._writer
+
+    @rank_zero_only
+    def is_disabled(self) -&gt; bool:
+        return self.writer is None
+
+    @rank_zero_only
+    def log_hyperparams(self, params: tp.Union[tp.Dict[str, tp.Any], Namespace],
+                        metrics: tp.Optional[dict] = None) -&gt; None:
+        &#34;&#34;&#34;Record experiment hyperparameters.
+        This method logs the hyperparameters associated to the experiment.
+
+        Args:
+            params: Dictionary of hyperparameters
+            metrics: Dictionary of final metrics for the set of hyperparameters
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled():
+            return
+
+        params = _convert_params(params)
+        params = _flatten_dict(params)
+        params = _sanitize_params(params)
+        if metrics is None or len(metrics) == 0:
+            metrics = {&#39;hparams_metrics&#39;: -1}
+        self.writer.add_hparams(params, metrics)
+
+    @rank_zero_only
+    def log_metrics(self, prefix: tp.Union[str, tp.List[str]], metrics: dict, step: tp.Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Records metrics.
+        This method logs metrics as as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            metrics: Dictionary with metric names as keys and measured quantities as values
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled():
+            return
+
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+
+        for key, val in metrics.items():
+            if isinstance(val, torch.Tensor):
+                val = val.item()
+
+            if isinstance(val, dict):
+                self.writer.add_scalars(key, val, step)
+            else:
+                try:
+                    self.writer.add_scalar(key, val, step)
+                except Exception as ex:
+                    msg = f&#34;\n you tried to log {val} ({type(val)}) which is currently not supported. &#34; \
+                        &#34;Try a dict or a scalar/tensor.&#34;
+                    raise ValueError(msg) from ex
+
+    @rank_zero_only
+    def log_audio(self, key: str, prefix: tp.Union[str, tp.List[str]], audio: tp.Any, sample_rate: int,
+                  step: tp.Optional[int] = None, **kwargs: tp.Any) -&gt; None:
+        &#34;&#34;&#34;Records audio.
+        This method logs audio wave as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            key: Key for the audio
+            audio: Torch Tensor representing the audio as [C, T]
+            sample_rate: Sample rate corresponding to the audio
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled() or not self.with_media_logging:
+            return
+
+        assert isinstance(audio, torch.Tensor), &#34;Only support logging torch.Tensor as audio&#34;
+
+        metrics = {
+            key: audio.mean(dim=-2, keepdim=True).clamp(-0.99, 0.99)
+        }
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+        for name, media in metrics.items():
+            self.writer.add_audio(
+                name,
+                media,
+                step,
+                sample_rate,
+                **kwargs
+            )
+
+    @rank_zero_only
+    def log_image(self, prefix: tp.Union[str, tp.List[str]], key: str, image: tp.Any,
+                  step: tp.Optional[int] = None, **kwargs: tp.Any) -&gt; None:
+        &#34;&#34;&#34;Records image.
+        This method logs image as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            key: Key for the image
+            image: Torch Tensor representing the image
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled() or not self.with_media_logging:
+            return
+
+        assert isinstance(image, torch.Tensor), &#34;Only support logging torch.Tensor as image&#34;
+
+        metrics = {
+            key: image
+        }
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+        for name, media in metrics.items():
+            self.writer.add_image(
+                name,
+                media,
+                step,
+                **kwargs
+            )
+
+    @rank_zero_only
+    def log_text(self, prefix: tp.Union[str, tp.List[str]], key: str, text: str,
+                 step: tp.Optional[int] = None, **kwargs: tp.Any) -&gt; None:
+        &#34;&#34;&#34;Records text.
+        This method logs text as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            key: Key for the text
+            text: String containing message
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;writer tried to log from global_rank != 0&#34;
+        if self.is_disabled() or not self.with_media_logging:
+            return
+
+        metrics = {
+            key: text
+        }
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+        for name, media in metrics.items():
+            self.writer.add_text(
+                name,
+                media,
+                step,
+                **kwargs
+            )
+
+    @property
+    def save_dir(self) -&gt; str:
+        &#34;&#34;&#34;Directory where the data is saved.&#34;&#34;&#34;
+        return self._save_dir
+
+    @property
+    def with_media_logging(self) -&gt; bool:
+        &#34;&#34;&#34;Whether the logger can save media or ignore them.&#34;&#34;&#34;
+        return self._with_media_logging
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;Name of the experiment logger.&#34;&#34;&#34;
+        return self._name
+
+    @classmethod
+    def from_xp(cls, with_media_logging: bool = True, name: tp.Optional[str] = None, sub_dir: tp.Optional[str] = None):
+        save_dir = dora.get_xp().folder / &#39;tensorboard&#39;
+        if sub_dir:
+            save_dir = save_dir / sub_dir
+        save_dir.mkdir(exist_ok=True, parents=True)
+        return TensorboardLogger(save_dir, with_media_logging, name=name)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="flashy.loggers.tensorboard.TensorboardLogger"><code class="flex name class">
+<span>class <span class="ident">TensorboardLogger</span></span>
+<span>(</span><span>save_dir: Union[pathlib.Path, str], with_media_logging: bool = True, name: Optional[str] = None, **kwargs: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ExperimentLogger for Tensorboard</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>save_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>The directory where the experiment logs are written to</dd>
+<dt><strong><code>with_media_logging</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether to save media samples with the logger or ignore them
+This comes at extra storage costs for Tensorboard so we might not want to enforce it</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name for the experiment logs</dd>
+<dt><strong><code>kwargs</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Additional tensorboard parameters</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TensorboardLogger(ExperimentLogger):
+    &#34;&#34;&#34;ExperimentLogger for Tensorboard
+
+    Args:
+        save_dir (str): The directory where the experiment logs are written to
+        with_media_logging (bool): Whether to save media samples with the logger or ignore them
+            This comes at extra storage costs for Tensorboard so we might not want to enforce it
+        name (str): Name for the experiment logs
+        kwargs (Any): Additional tensorboard parameters
+    &#34;&#34;&#34;
+    def __init__(self, save_dir: tp.Union[Path, str], with_media_logging: bool = True,
+                 name: tp.Optional[str] = None, **kwargs: tp.Any):
+        self._with_media_logging = with_media_logging
+        self._save_dir = str(save_dir)
+        self._name = name or &#39;tensorboard&#39;
+        self._writer: tp.Optional[SummaryWriter] = None
+        if SummaryWriter is not None:
+            self._writer = SummaryWriter(self.save_dir, **kwargs)
+        else:
+            warnings.warn(&#34;tensorboard package was not found: use pip install tensorboard&#34;)
+
+    @property  # type: ignore
+    @rank_zero_only
+    def writer(self) -&gt; tp.Optional[SummaryWriter]:
+        &#34;&#34;&#34;Actual tensorboard writer object.&#34;&#34;&#34;
+        return self._writer
+
+    @rank_zero_only
+    def is_disabled(self) -&gt; bool:
+        return self.writer is None
+
+    @rank_zero_only
+    def log_hyperparams(self, params: tp.Union[tp.Dict[str, tp.Any], Namespace],
+                        metrics: tp.Optional[dict] = None) -&gt; None:
+        &#34;&#34;&#34;Record experiment hyperparameters.
+        This method logs the hyperparameters associated to the experiment.
+
+        Args:
+            params: Dictionary of hyperparameters
+            metrics: Dictionary of final metrics for the set of hyperparameters
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled():
+            return
+
+        params = _convert_params(params)
+        params = _flatten_dict(params)
+        params = _sanitize_params(params)
+        if metrics is None or len(metrics) == 0:
+            metrics = {&#39;hparams_metrics&#39;: -1}
+        self.writer.add_hparams(params, metrics)
+
+    @rank_zero_only
+    def log_metrics(self, prefix: tp.Union[str, tp.List[str]], metrics: dict, step: tp.Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Records metrics.
+        This method logs metrics as as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            metrics: Dictionary with metric names as keys and measured quantities as values
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled():
+            return
+
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+
+        for key, val in metrics.items():
+            if isinstance(val, torch.Tensor):
+                val = val.item()
+
+            if isinstance(val, dict):
+                self.writer.add_scalars(key, val, step)
+            else:
+                try:
+                    self.writer.add_scalar(key, val, step)
+                except Exception as ex:
+                    msg = f&#34;\n you tried to log {val} ({type(val)}) which is currently not supported. &#34; \
+                        &#34;Try a dict or a scalar/tensor.&#34;
+                    raise ValueError(msg) from ex
+
+    @rank_zero_only
+    def log_audio(self, key: str, prefix: tp.Union[str, tp.List[str]], audio: tp.Any, sample_rate: int,
+                  step: tp.Optional[int] = None, **kwargs: tp.Any) -&gt; None:
+        &#34;&#34;&#34;Records audio.
+        This method logs audio wave as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            key: Key for the audio
+            audio: Torch Tensor representing the audio as [C, T]
+            sample_rate: Sample rate corresponding to the audio
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled() or not self.with_media_logging:
+            return
+
+        assert isinstance(audio, torch.Tensor), &#34;Only support logging torch.Tensor as audio&#34;
+
+        metrics = {
+            key: audio.mean(dim=-2, keepdim=True).clamp(-0.99, 0.99)
+        }
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+        for name, media in metrics.items():
+            self.writer.add_audio(
+                name,
+                media,
+                step,
+                sample_rate,
+                **kwargs
+            )
+
+    @rank_zero_only
+    def log_image(self, prefix: tp.Union[str, tp.List[str]], key: str, image: tp.Any,
+                  step: tp.Optional[int] = None, **kwargs: tp.Any) -&gt; None:
+        &#34;&#34;&#34;Records image.
+        This method logs image as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            key: Key for the image
+            image: Torch Tensor representing the image
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;experiment tried to log from global_rank != 0&#34;
+        if self.is_disabled() or not self.with_media_logging:
+            return
+
+        assert isinstance(image, torch.Tensor), &#34;Only support logging torch.Tensor as image&#34;
+
+        metrics = {
+            key: image
+        }
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+        for name, media in metrics.items():
+            self.writer.add_image(
+                name,
+                media,
+                step,
+                **kwargs
+            )
+
+    @rank_zero_only
+    def log_text(self, prefix: tp.Union[str, tp.List[str]], key: str, text: str,
+                 step: tp.Optional[int] = None, **kwargs: tp.Any) -&gt; None:
+        &#34;&#34;&#34;Records text.
+        This method logs text as soon as it received them.
+
+        Args:
+            prefix: Prefix(es) to use for metric names when writing to smart logger
+            key: Key for the text
+            text: String containing message
+            step: Step number at which the metrics should be recorded
+        &#34;&#34;&#34;
+        assert is_rank_zero(), &#34;writer tried to log from global_rank != 0&#34;
+        if self.is_disabled() or not self.with_media_logging:
+            return
+
+        metrics = {
+            key: text
+        }
+        metrics = _add_prefix(metrics, prefix, self.group_separator)
+        for name, media in metrics.items():
+            self.writer.add_text(
+                name,
+                media,
+                step,
+                **kwargs
+            )
+
+    @property
+    def save_dir(self) -&gt; str:
+        &#34;&#34;&#34;Directory where the data is saved.&#34;&#34;&#34;
+        return self._save_dir
+
+    @property
+    def with_media_logging(self) -&gt; bool:
+        &#34;&#34;&#34;Whether the logger can save media or ignore them.&#34;&#34;&#34;
+        return self._with_media_logging
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;Name of the experiment logger.&#34;&#34;&#34;
+        return self._name
+
+    @classmethod
+    def from_xp(cls, with_media_logging: bool = True, name: tp.Optional[str] = None, sub_dir: tp.Optional[str] = None):
+        save_dir = dora.get_xp().folder / &#39;tensorboard&#39;
+        if sub_dir:
+            save_dir = save_dir / sub_dir
+        save_dir.mkdir(exist_ok=True, parents=True)
+        return TensorboardLogger(save_dir, with_media_logging, name=name)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="flashy.loggers.base.ExperimentLogger" href="base.html#flashy.loggers.base.ExperimentLogger">ExperimentLogger</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="flashy.loggers.tensorboard.TensorboardLogger.from_xp"><code class="name flex">
+<span>def <span class="ident">from_xp</span></span>(<span>with_media_logging: bool = True, name: Optional[str] = None, sub_dir: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_xp(cls, with_media_logging: bool = True, name: tp.Optional[str] = None, sub_dir: tp.Optional[str] = None):
+    save_dir = dora.get_xp().folder / &#39;tensorboard&#39;
+    if sub_dir:
+        save_dir = save_dir / sub_dir
+    save_dir.mkdir(exist_ok=True, parents=True)
+    return TensorboardLogger(save_dir, with_media_logging, name=name)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="flashy.loggers.tensorboard.TensorboardLogger.writer"><code class="name">var <span class="ident">writer</span> : None</code></dt>
+<dd>
+<div class="desc"><p>Actual tensorboard writer object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property  # type: ignore
+@rank_zero_only
+def writer(self) -&gt; tp.Optional[SummaryWriter]:
+    &#34;&#34;&#34;Actual tensorboard writer object.&#34;&#34;&#34;
+    return self._writer</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="flashy.loggers.tensorboard.TensorboardLogger.is_disabled"><code class="name flex">
+<span>def <span class="ident">is_disabled</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@rank_zero_only
+def is_disabled(self) -&gt; bool:
+    return self.writer is None</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="flashy.loggers.base.ExperimentLogger" href="base.html#flashy.loggers.base.ExperimentLogger">ExperimentLogger</a></b></code>:
+<ul class="hlist">
+<li><code><a title="flashy.loggers.base.ExperimentLogger.group_separator" href="base.html#flashy.loggers.base.ExperimentLogger.group_separator">group_separator</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.log_audio" href="base.html#flashy.loggers.base.ExperimentLogger.log_audio">log_audio</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.log_hyperparams" href="base.html#flashy.loggers.base.ExperimentLogger.log_hyperparams">log_hyperparams</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.log_image" href="base.html#flashy.loggers.base.ExperimentLogger.log_image">log_image</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.log_metrics" href="base.html#flashy.loggers.base.ExperimentLogger.log_metrics">log_metrics</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.log_text" href="base.html#flashy.loggers.base.ExperimentLogger.log_text">log_text</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.name" href="base.html#flashy.loggers.base.ExperimentLogger.name">name</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.save_dir" href="base.html#flashy.loggers.base.ExperimentLogger.save_dir">save_dir</a></code></li>
+<li><code><a title="flashy.loggers.base.ExperimentLogger.with_media_logging" href="base.html#flashy.loggers.base.ExperimentLogger.with_media_logging">with_media_logging</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="flashy.loggers" href="index.html">flashy.loggers</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="flashy.loggers.tensorboard.TensorboardLogger" href="#flashy.loggers.tensorboard.TensorboardLogger">TensorboardLogger</a></code></h4>
+<ul class="">
+<li><code><a title="flashy.loggers.tensorboard.TensorboardLogger.from_xp" href="#flashy.loggers.tensorboard.TensorboardLogger.from_xp">from_xp</a></code></li>
+<li><code><a title="flashy.loggers.tensorboard.TensorboardLogger.is_disabled" href="#flashy.loggers.tensorboard.TensorboardLogger.is_disabled">is_disabled</a></code></li>
+<li><code><a title="flashy.loggers.tensorboard.TensorboardLogger.writer" href="#flashy.loggers.tensorboard.TensorboardLogger.writer">writer</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
