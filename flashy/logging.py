@@ -145,6 +145,7 @@ class LogProgressBar:
         self._iterator = iter(self._iterable)
         self._will_log = False
         self._index = -1
+        self._last_index = -1
         self._metrics = {}
         self._begin = time.time()
         return self
@@ -167,7 +168,9 @@ class LogProgressBar:
             return value
 
     def _log(self):
-        self._speed = (1 + self._index) / (time.time() - self._begin)
+        self._speed = (self._index - self._last_index) / (time.time() - self._begin)
+        self._begin = time.time()
+        self._last_index = self._index
         infos = [f"{k}{self._items_delimiter}{v}" for k, v in self._metrics.items()]
         if self._speed < 1e-4:
             speed = 'oo sec/it'
